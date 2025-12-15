@@ -1,4 +1,4 @@
-# main.py
+# main
 import pygame, sys
 from settings import W, H, ground_space
 from world import World
