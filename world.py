@@ -1,4 +1,4 @@
-# world.py
+# world
 import pygame
 from obstacle import Obstacle
 from animal import Animal
