@@ -36,3 +36,60 @@ class World:
         self._add_obstacle()
         animal = Animal((W//2 - obstacle_size, H//2 - obstacle_size), 30)
         self.player.add(animal)
+
+    # for moving background/obstacle
+    def _scroll_x(self):
+        if self.playing:
+            self.world_shift = -6
+        else:
+            self.world_shift = 0
+
+    # add gravity to animal for falling
+    def _apply_gravity(self, player):
+        if self.playing or self.game_over:
+            player.direction.y += self.gravity
+            player.rect.y += player.direction.y
+
+    # handles scoring and collision
+    def _handle_collisions(self):
+        animal = self.player.sprite
+        # for collision checking
+        if pygame.sprite.groupcollide(self.player, self.obstacles, False, False) or animal.rect.bottom >= H or animal.rect.top <= 0:
+            self.playing = False
+            self.game_over = True
+        else:
+            # if player pass through the pipe gaps
+            animal = self.player.sprite
+            if animal.rect.x >= self.current_obstacle.rect.centerx:
+                animal.score += 1
+                self.passed = True
+
+        # updates the animals overall state
+        def update(self, player_event=None):
+            # new obstacle adder
+            if self.current_obstacle.rect.centerx <= (W// 2) - obstacle_size:
+                self._add_obstacle()
+            # updates, draws obstacles
+            self.obstacles.update(self.world_shift)
+            self.obstacles.draw(self.screen)
+            # applying game physics
+            self._apply_gravity(self.player.sprite)
+            self._scroll_x()
+            self._handle_collisions()
+            # configuring player actions
+            if player_event == "jump" and not self.game_over:
+                player_event = True
+            elif player_event == "restart":
+                self.game_over = False
+                self.obstacles.empty()
+                self.player.empty()
+                self.player.score = 0
+                self._generate_world()
+            else:
+                player_event = False
+            if not self.playing:
+                self.game.instructions()
+            # updates, draws pipes
+            self.player.update(player_event)
+            self.player.draw(self.screen)
+            self.game.show_score(self.player.sprite.score)
