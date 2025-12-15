@@ -64,32 +64,32 @@ class World:
                 animal.score += 1
                 self.passed = True
 
-        # updates the animals overall state
-        def update(self, player_event=None):
-            # new obstacle adder
-            if self.current_obstacle.rect.centerx <= (W// 2) - obstacle_size:
-                self._add_obstacle()
-            # updates, draws obstacles
-            self.obstacles.update(self.world_shift)
-            self.obstacles.draw(self.screen)
-            # applying game physics
-            self._apply_gravity(self.player.sprite)
-            self._scroll_x()
-            self._handle_collisions()
-            # configuring player actions
-            if player_event == "jump" and not self.game_over:
-                player_event = True
-            elif player_event == "restart":
-                self.game_over = False
-                self.obstacles.empty()
-                self.player.empty()
-                self.player.score = 0
-                self._generate_world()
-            else:
-                player_event = False
-            if not self.playing:
-                self.game.instructions()
-            # updates, draws pipes
-            self.player.update(player_event)
-            self.player.draw(self.screen)
-            self.game.show_score(self.player.sprite.score)
+    # updates the animals overall state
+    def update(self, player_event=None):
+        # new obstacle adder
+        if self.current_obstacle.rect.centerx <= (W // 2) - obstacle_size:
+            self._add_obstacle()
+        # updates, draws obstacles
+        self.obstacles.update(self.world_shift)
+        self.obstacles.draw(self.screen)
+        # applying game physics
+        self._apply_gravity(self.player.sprite)
+        self._scroll_x()
+        self._handle_collisions()
+        # configuring player actions
+        if player_event == "jump" and not self.game_over:
+            player_event = True
+        elif player_event == "restart":
+            self.game_over = False
+            self.obstacles.empty()
+            self.player.empty()
+            self.player.score = 0
+            self._generate_world()
+        else:
+            player_event = False
+        if not self.playing:
+            self.game.instructions()
+        # updates, draws obstacles
+        self.player.update(player_event)
+        self.player.draw(self.screen)
+        self.game.show_score(self.player.sprite.score)
