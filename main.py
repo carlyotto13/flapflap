@@ -1,5 +1,6 @@
 # main
-import pygame, sys
+import pygame
+import sys
 from settings import W, H, ground_space
 from world import World
 
