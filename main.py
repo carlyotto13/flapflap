@@ -1,8 +1,12 @@
 # main
 import pygame
 import sys
+
+from animal_builder import AnimalBuilder
+from animal_director import AnimalDirector
 from settings import W, H, ground_space
 from world import World
+from selection_screen import SelectionScreen
 
 pygame.init()
 
@@ -19,6 +23,10 @@ class Main:
         self.scroll_speed = -6
         self.FPS = pygame.time.Clock()
         self.stop_ground_scroll = False
+
+    selection = SelectionScreen(screen)
+    animal = selection.run()
+    world = World(screen, animal)
 
     def main(self):
         world = World(screen)
