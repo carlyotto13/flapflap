@@ -1,4 +1,4 @@
-# main.py
+# main
 #import pygame
 #import sys
 #from settings import W, H, ground_space
