@@ -4,12 +4,10 @@ import random
 
 pygame.init()
 
-### GAME
+### BACKGROUND
 # size
 GAME_WIDTH = 360
 GAME_HEIGHT = 640
-
-### BACKGROUND
 # get image
 background = pygame.image.load("frog_background.png")
 
