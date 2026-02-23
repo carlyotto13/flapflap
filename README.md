@@ -63,5 +63,11 @@ flapflap/
   - background 
   - pipes 
 - coding 
-- changing Project structure in the READme ? 
-- sounds ? 
+- changing Project structure in the READme  
+- sounds 
+- settings 
+- highscore 
+- animation ? 
+- simplify code 
+- docstrings !!! 
+- change it so that SPACE is also a sign for retry 

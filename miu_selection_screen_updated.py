@@ -2,7 +2,7 @@ import pygame
 from sys import exit
 from miu_screen import Screen
 from miu_settings import GAME_WIDTH, GAME_HEIGHT
-from miu_animals.miu_frog import run_frog
+from miu_run import run_flappy
 
 def run_selection():
     pygame.init()
@@ -26,8 +26,7 @@ def run_selection():
                 pos = pygame.mouse.get_pos()
                 for rect, label in screen.blocks:
                     if rect.collidepoint(pos):
-                        if label == "FROG":
-                            run_frog()
+                        run_flappy(label)
             if event.type == CLOUD_EVENT:
                 screen.create_cloud()
 

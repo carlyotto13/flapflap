@@ -1,8 +1,9 @@
 # main.py
 from miu_selection_screen_updated import run_selection
-from miu_animals.miu_frog import run_frog
+#from miu_animals.miu_frog import run_frog
 from miu_gameover_screen import run_game_over
 from miu_highscore import highscore, update_highscore
+from miu_run import run_flappy
 
 if __name__ == "__main__":
     last_animal = None
@@ -15,13 +16,12 @@ if __name__ == "__main__":
             choice = last_animal
 
         #Tier-Spiel starten
-        if choice == "FROG":
-            score = run_frog()
+        score = run_flappy(choice)
 
         #Game Over Screen
-        action, last_animal = run_game_over(score, last_animal)
+        action, last_animal = run_game_over(score, choice)
 
         #Entscheidung auswerten
         if action == "BACK_TO_MENU":
-            last_animal = None  # Auswahl wieder möglich
+            last_animal = None  #   Auswahl wieder möglich
 
