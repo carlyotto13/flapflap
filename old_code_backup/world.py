@@ -95,10 +95,10 @@
         #self.game.show_score(self.player.sprite.score)
 
 import pygame
-from obstacle import Obstacle
-from animal1 import Animal
-from game import GameIndicator
-from settings import W, H, obstacle_size, obstacle_gap, obstacle_pair_sizes
+from old_code_backup.obstacle import Obstacle
+from old_code_backup.animal1 import Animal
+from old_code_backup.game import GameIndicator
+from old_code_backup.settings import W, H, obstacle_size, obstacle_gap, obstacle_pair_sizes
 import random
 
 class World:

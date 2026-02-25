@@ -17,13 +17,13 @@ def run_flappy(animal_key):
 
     config = ANIMALS[animal_key]
 
-    point_sound = pygame.mixer.Sound("assets/sounds/obstacle_sound.wav")
+    point_sound = pygame.mixer.Sound("../assets/sounds/obstacle_sound.wav")
     point_sound.set_volume(0.05)
 
-    flap_sound = pygame.mixer.Sound("assets/sounds/flap_sound.wav")
+    flap_sound = pygame.mixer.Sound("../assets/sounds/flap_sound.wav")
     flap_sound.set_volume(0.3)
 
-    gameover_sound = pygame.mixer.Sound("assets/sounds/gameover_sound.wav")
+    gameover_sound = pygame.mixer.Sound("../assets/sounds/gameover_sound.wav")
     gameover_sound.set_volume(0.1)
 
 

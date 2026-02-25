@@ -1,7 +1,7 @@
 import pygame
 from sys import exit
 from miu_screen import Screen
-from miu_settings import GAME_WIDTH, GAME_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT, TEXT_FONT_SIZE
+from miu_settings import GAME_WIDTH, GAME_HEIGHT
 from miu_run import run_flappy
 from miu_setting_screen import run_settings
 
@@ -14,8 +14,8 @@ def run_selection():
     labels = ["FROG", "HAMSTER", "PENGUIN", "DOG"]
     screen = Screen(
         window,
-        'assets/starting_screen/start_background.png',
-        block_image_path='assets/starting_screen/start_block.png',
+        '../assets/starting_screen/start_background.png',
+        block_image_path='../assets/starting_screen/start_block.png',
         show_settings=True
     )
     screen.add_blocks(

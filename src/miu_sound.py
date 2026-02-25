@@ -1,6 +1,4 @@
 import pygame
-from sys import exit
-import random
 from miu_settings import SOUND_SETTINGS
 
 def update_background_music():

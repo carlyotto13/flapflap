@@ -2,7 +2,6 @@ import pygame
 from sys import exit
 from miu_screen import Screen
 from miu_settings import GAME_WIDTH, GAME_HEIGHT
-import random
 import miu_highscore
 
 
@@ -14,8 +13,8 @@ def run_game_over(score, last_animal):
     # Screen Setup mit Settings-Button
     screen = Screen(
         window,
-        background_path='assets/starting_screen/start_background.png',
-        block_image_path='assets/starting_screen/start_block.png',
+        background_path='../assets/starting_screen/start_background.png',
+        block_image_path='../assets/starting_screen/start_block.png',
         show_settings=False
     )
 

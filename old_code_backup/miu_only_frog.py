@@ -9,7 +9,7 @@ pygame.init()
 GAME_WIDTH = 360
 GAME_HEIGHT = 640
 # get image
-background = pygame.image.load("assets/frog/frog_background.png")
+background = pygame.image.load("../assets/frog/frog_background.png")
 
 ### FROG
 # set starting position
@@ -19,7 +19,7 @@ frog_y = GAME_HEIGHT / 2
 frog_width = 55
 frog_height = 64
 # get image
-frog_image = pygame.image.load("assets/frog/frog_01.png")
+frog_image = pygame.image.load("../assets/frog/frog_01.png")
 # changing the size of the image
 frog_image = pygame.transform.scale(frog_image, (frog_width, frog_height))
 
@@ -31,7 +31,7 @@ pipe_y = 0
 pipe_width = 50
 pipe_height = 512
 # get image
-top_pipe_image = pygame.image.load("assets/frog/frog_obstacle.png")
+top_pipe_image = pygame.image.load("../assets/frog/frog_obstacle.png")
 # changing size
 top_pipe_image = pygame.transform.scale(top_pipe_image, (pipe_width, pipe_height))
 # bottom pipe = top pipe rotated by 180°

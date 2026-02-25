@@ -5,14 +5,12 @@ from miu_gameover_screen import run_game_over
 import miu_highscore
 from miu_run import run_flappy
 import pygame
-from miu_settings import SOUND_SETTINGS
 from miu_sound import update_background_music
-from os import path
 
 pygame.init()
 pygame.mixer.init()
 
-pygame.mixer.music.load("assets/sounds/background_music.wav")
+pygame.mixer.music.load("../assets/sounds/background_music.wav")
 pygame.mixer.music.set_volume(0.1)  # 0.0 - 1.0
 
 # Highscore beim Programmstart laden

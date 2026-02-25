@@ -1,21 +1,22 @@
 import pygame
 from sys import exit
 from miu_screen import Screen
-from miu_settings import GAME_WIDTH, GAME_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, CIRCLE_WIDTH, CIRCLE_HEIGHT, TEXT_FONT_SIZE, SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT, SOUND_SETTINGS
-from miu_run import run_flappy
+from miu_settings import GAME_WIDTH, GAME_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, CIRCLE_WIDTH, CIRCLE_HEIGHT, \
+    SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT, BLOCK_WIDTH, SOUND_SETTINGS
+
 
 def run_settings():
     pygame.init()
     window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
     clock = pygame.time.Clock()
 
-    screen = Screen(window, 'assets/starting_screen/start_background.png', block_image_path='assets/starting_screen/start_block.png', show_settings=False)
+    screen = Screen(window, '../assets/starting_screen/start_background.png', block_image_path='../assets/starting_screen/start_block.png', show_settings=False)
 
     # Buttons und Circles
-    button_image = pygame.image.load("assets/settings_screen/button.png")
+    button_image = pygame.image.load("../assets/settings_screen/button.png")
     button_image = pygame.transform.scale(button_image, (BUTTON_WIDTH, BUTTON_HEIGHT))
 
-    circle_image = pygame.image.load("assets/settings_screen/circle.png")
+    circle_image = pygame.image.load("../assets/settings_screen/circle.png")
     circle_image = pygame.transform.scale(circle_image, (CIRCLE_WIDTH, CIRCLE_HEIGHT))
 
     button_status = [
@@ -24,7 +25,7 @@ def run_settings():
     ]
 
     # Back-Button
-    back_button_image = pygame.image.load("assets/settings_screen/back_button.png")
+    back_button_image = pygame.image.load("../assets/settings_screen/back_button.png")
     back_button_image = pygame.transform.scale(back_button_image, (SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT))
     back_button_rect = back_button_image.get_rect(topright=(GAME_WIDTH - 20, 20))
 

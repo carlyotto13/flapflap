@@ -10,7 +10,7 @@ pygame.init()
 GAME_WIDTH = 360
 GAME_HEIGHT = 640
 # get image
-background = pygame.image.load('assets/starting_screen/start_background.png')
+background = pygame.image.load('../assets/starting_screen/start_background.png')
 
 ### CLOUD
 cloud_x = GAME_WIDTH
@@ -19,12 +19,12 @@ cloud_y = GAME_HEIGHT / 2
 cloud_width = 209
 cloud_height = 120
 # get image
-cloud_image = pygame.image.load('assets/starting_screen/start_obstacle.png')
+cloud_image = pygame.image.load('../assets/starting_screen/start_obstacle.png')
 # changing size
 cloud_image = pygame.transform.scale(cloud_image, (cloud_width, cloud_height))
 
 ### choosing blocks
-block = pygame.image.load('assets/starting_screen/start_block.png')
+block = pygame.image.load('../assets/starting_screen/start_block.png')
 #sizw
 block_width = 183
 block_height = 72

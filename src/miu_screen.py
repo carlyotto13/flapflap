@@ -18,16 +18,16 @@ class Screen:
 
         # Wolken
         self.clouds = []
-        self.cloud_image = pygame.image.load('assets/starting_screen/start_obstacle.png')
+        self.cloud_image = pygame.image.load('../assets/starting_screen/start_obstacle.png')
         self.cloud_image = pygame.transform.scale(self.cloud_image, (209, 120))
 
         # Settings-Icon
-        self.settings_image = pygame.image.load("assets/settings_screen/seetings_button.png")
+        self.settings_image = pygame.image.load("../assets/settings_screen/seetings_button.png")
         self.settings_image = pygame.transform.scale(self.settings_image, (SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT))
 
         self.show_settings = show_settings
         if self.show_settings:
-            self.settings_image = pygame.image.load("assets/settings_screen/seetings_button.png")
+            self.settings_image = pygame.image.load("../assets/settings_screen/seetings_button.png")
             self.settings_image = pygame.transform.scale(self.settings_image,
                                                          (SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT))
             self.settings_rect = self.settings_image.get_rect()

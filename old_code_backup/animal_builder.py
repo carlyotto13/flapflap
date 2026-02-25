@@ -1,4 +1,4 @@
-from animal1 import Animal
+from old_code_backup.animal1 import Animal
 import pygame
 
 class AnimalBuilder:
@@ -19,17 +19,17 @@ class AnimalBuilder:
 class FrogBuilder(AnimalBuilder):
     def set_images(self):
         self.animal.IMGS = [
-            pygame.transform.scale2x(pygame.image.load("assets/animal/frog1.png")),
-            pygame.transform.scale2x(pygame.image.load("assets/animal/frog2.png")),
-            pygame.transform.scale2x(pygame.image.load("assets/animal/frog3.png"))
+            pygame.transform.scale2x(pygame.image.load("old_assets/animal/frog1.png")),
+            pygame.transform.scale2x(pygame.image.load("old_assets/animal/frog2.png")),
+            pygame.transform.scale2x(pygame.image.load("old_assets/animal/frog3.png"))
         ]
 
 
 class HamsterBuilder(AnimalBuilder):
     def set_images(self):
         self.animal.IMGS = [
-            pygame.transform.scale2x(pygame.image.load("assets/animal/hamster1.png")),
-            pygame.transform.scale2x(pygame.image.load("assets/animal/hamster2.png")),
+            pygame.transform.scale2x(pygame.image.load("old_assets/animal/hamster1.png")),
+            pygame.transform.scale2x(pygame.image.load("old_assets/animal/hamster2.png")),
             pygame.transform.scale2x(pygame.image.load("assets/animal/hamster3.png"))
         ]
 
