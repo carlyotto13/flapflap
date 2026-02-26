@@ -1,6 +1,6 @@
 import pygame
-from animal_builder import FrogBuilder, HamsterBuilder, PenguinBuilder, DogBuilder
-from animal_director import AnimalDirector
+from old_code_backup.animal_builder import FrogBuilder, HamsterBuilder, PenguinBuilder, DogBuilder
+from old_code_backup.animal_director import AnimalDirector
 
 
 class SelectionScreen:

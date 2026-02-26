@@ -10,7 +10,7 @@ class Animal(pygame.sprite.Sprite):
         self.animation_delay = 3
         self.jump_move = -9
         # animal animation
-        self.animal_img = import_sprite("assets/animal")
+        self.animal_img = import_sprite("old_assets/animal")
         self.image = self.animal_img[self.frame_index]
         self.image = pygame.transform.scale(self.image, (size, size))
         self.rect = self.image.get_rect(topleft = pos)

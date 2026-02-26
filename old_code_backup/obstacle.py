@@ -5,7 +5,7 @@ class Obstacle(pygame.sprite.Sprite):
     def __init__(self, pos, width, height, flip):
         super().__init__()
         self.width = width
-        img_path = 'assets/terrain/obstacle.png'
+        img_path = 'old_assets/terrain/obstacle.png'
         self.image = pygame.image.load(img_path)
         self.image = pygame.transform.scale(self.image, (width, height))
         if flip:
