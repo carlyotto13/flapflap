@@ -79,12 +79,12 @@ flapflap/
 
 ## Architecture
 
-- **Main.py** handles program flow (menu → game → game over → settings)
-- **miu_run.py** contains the game loop and game mechanics
-- **miu_highscore.py** manages persistent highscore storage
-- **miu_sound.py** handles background music and sound effects
-- **miu_screen.py** provides reusable screen and block rendering logic
-- **miu_selection_screen_updated.py** and **miu_gameover_screen.py** handle UI screens
+- **main.py** handles program flow (menu → game → game over → settings)
+- **run.py** contains the game loop and game mechanics
+- **highscore.py** manages persistent highscore storage
+- **sound.py** handles background music and sound effects
+- **screen.py** provides reusable screen and block rendering logic
+- **selection_screen_updated.py** and **gameover_screen.py** handle UI screens
 
 This separation allows for easier maintenance, unit testing, and future feature expansion.
 
