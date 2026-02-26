@@ -2,9 +2,9 @@
 import pygame
 from sys import exit
 import random
-from src.miu_settings import GAME_WIDTH, GAME_HEIGHT, FROG_START_X, FROG_START_Y, FROG_WIDTH, FROG_HEIGHT, GRAVITY, PIPE_WIDTH, PIPE_HEIGHT, PIPE_OPENING_SPACE, PIPE_SPEED
-from src.miu_gameover_screen import run_game_over
-from src.miu_highscore import update_highscore
+from src.settings import GAME_WIDTH, GAME_HEIGHT, FROG_START_X, FROG_START_Y, FROG_WIDTH, FROG_HEIGHT, GRAVITY, PIPE_WIDTH, PIPE_HEIGHT, PIPE_OPENING_SPACE, PIPE_SPEED
+from src.gameover_screen import run_game_over
+from src.highscore import update_highscore
 
 def run_frog():
     pygame.init()

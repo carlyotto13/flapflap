@@ -1,9 +1,9 @@
 import pygame
 from sys import exit
-from miu_screen import Screen
-from miu_settings import GAME_WIDTH, GAME_HEIGHT
-from miu_run import run_flappy
-from miu_setting_screen import run_settings
+from screen import Screen
+from settings import GAME_WIDTH, GAME_HEIGHT
+from run import run_flappy
+from setting_screen import run_settings
 
 def run_selection():
     pygame.init()

@@ -1,7 +1,7 @@
 import pygame
 from sys import exit
-from miu_screen import Screen
-from miu_settings import GAME_WIDTH, GAME_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, CIRCLE_WIDTH, CIRCLE_HEIGHT, \
+from screen import Screen
+from settings import GAME_WIDTH, GAME_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, CIRCLE_WIDTH, CIRCLE_HEIGHT, \
     SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT, BLOCK_WIDTH, SOUND_SETTINGS
 
 
@@ -95,7 +95,7 @@ def run_settings():
                         # ⚡ Sound-Einstellungen aktualisieren
                         if i == 0:  # Hintergrundmusik
                             SOUND_SETTINGS["background"] = button_status[i]
-                            from miu_sound import update_background_music
+                            from sound import update_background_music
                             update_background_music()  # sofort reagieren
 
                         elif i == 1:  # Game-Sounds

@@ -1,5 +1,5 @@
 import pygame
-from miu_settings import SOUND_SETTINGS
+from settings import SOUND_SETTINGS
 
 def update_background_music():
     if SOUND_SETTINGS["background"]:
