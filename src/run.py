@@ -5,6 +5,7 @@ from settings import SOUND_SETTINGS, GAME_WIDTH, GAME_HEIGHT, FROG_START_X, FROG
 from gameover_screen import run_game_over
 import highscore
 from animal import ANIMALS
+#from selection_screen_updated import run_flappy
 
 class Player:
     def __init__(self, image_path, config):
@@ -28,6 +29,16 @@ class Player:
     def draw(self, window):
         window.blit(self.image, self.rect)
 
+class Pipe:
+    def __init__(self, image, x, y, pipe_type):
+        self.image = image
+        self.rect = pygame.Rect(x, y, PIPE_WIDTH, PIPE_HEIGHT)
+        self.type = pipe_type
+        self.passed = False
+
+    def draw(self, window):
+        window.blit(self.image, self.rect)
+
 
 class PipeManager:
     def __init__(self, obstacle_image_path):
@@ -38,8 +49,8 @@ class PipeManager:
 
     def create_pipes(self):
         random_pipe_y = -PIPE_HEIGHT / 4 - random.random() * (PIPE_HEIGHT / 2)
-        top = PipeManager(self.obstacle_image, GAME_WIDTH, random_pipe_y, "top")
-        bottom = PipeManager(self.bottom_image, GAME_WIDTH,
+        top = Pipe(self.obstacle_image, GAME_WIDTH, random_pipe_y, "top")
+        bottom = Pipe(self.bottom_image, GAME_WIDTH,
         random_pipe_y + PIPE_HEIGHT + PIPE_OPENING_SPACE, "bottom")
         self.pipes.extend([top, bottom])
 
@@ -54,7 +65,7 @@ class PipeManager:
         for pipe in self.pipes:
             if player.rect.colliderect(pipe.rect):
                 return True
-            return False
+        return False
 
 
 class GameState:
@@ -129,8 +140,8 @@ class FlappyBirdGame:
                     else:
                         return "RESTART"
 
-            if event.key == pygame.K_ESCAPE:
-                self.game_state.paused = not self.game_state.paused
+                if event.key == pygame.K_ESCAPE:
+                    self.game_state.paused = not self.game_state.paused
 
         return "CONTINUE"
 
@@ -157,8 +168,8 @@ class FlappyBirdGame:
             pipe.draw(self.window)
 
         # Score anzeigen
-            score_text = self.font.render(str(int(self.game_state.score)), True, (255, 255, 255))
-            self.window.blit(score_text, (5, 0))
+        score_text = self.font.render(str(int(self.game_state.score)), True, (255, 255, 255))
+        self.window.blit(score_text, (5, 0))
 
         if self.game_state.paused:
             self.draw_pause_screen()
@@ -184,22 +195,27 @@ class FlappyBirdGame:
                 self.game_state.reset()
                 self.player = Player(self.config["player"], self.config)
                 self.pipe_manager.pipes.clear()
-            continue
+                continue
 
-        if not self.game_state.game_over and not self.game_state.paused:
-            self.player.update()
-            self.pipe_manager.update()
-            self.update_score()
-            self.check_game_over()
+            if not self.game_state.game_over and not self.game_state.paused:
+                self.player.update()
+                self.pipe_manager.update()
+                self.update_score()
+                self.check_game_over()
 
             self.draw()
 
-        if self.game_state.game_over:
-            action, _ = run_game_over(int(self.game_state.score), last_animal=self.animal_key)
-        if action == "TRY_AGAIN":
-            return run_flappy(self.animal_key)
-        elif action == "BACK_TO_MENU":
-            return
+            if self.game_state.game_over:
+                return self.game_state.score
+                #action, _ = run_game_over(int(self.game_state.score), last_animal=self.animal_key)
+                #if action == "TRY_AGAIN":
+                    #return run_flappy(self.animal_key)
+                #elif action == "BACK_TO_MENU":
+                    #return
 
-        pygame.display.flip()
-        self.clock.tick(60)
+            pygame.display.flip()
+            self.clock.tick(60)
+
+def run_flappy(animal_key):
+    game = FlappyBirdGame(animal_key)
+    return game.run()
