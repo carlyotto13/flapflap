@@ -21,7 +21,7 @@ def run_game_over(score, last_animal):
     # Blöcke mit Text und optionaler Schriftgröße
     labels = [
         "GAME OVER",
-        f"Highscore: {miu_highscore.highscore}\nYour Score: {score}",
+        f"Highscore: {highscore.highscore}\nYour Score: {score}",
         "TRY AGAIN",
         "BACK TO MENU"
     ]
