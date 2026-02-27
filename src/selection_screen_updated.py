@@ -2,7 +2,7 @@ import pygame
 from sys import exit
 from screen import Screen
 from settings import GAME_WIDTH, GAME_HEIGHT
-from run import run_flappy
+#from run import run_flappy
 from setting_screen import run_settings
 
 def run_selection():
@@ -38,7 +38,7 @@ def run_selection():
                 pos = pygame.mouse.get_pos()
                 for rect, label, scale in screen.blocks:
                     if rect.collidepoint(pos):
-                        run_flappy(label[0])
+                        return label[0]
                 if screen.settings_rect.collidepoint(pos):
                     run_settings()
             if event.type == CLOUD_EVENT:
