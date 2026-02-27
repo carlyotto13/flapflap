@@ -150,8 +150,8 @@ class FlappyBirdGame:
             if not pipe.passed and self.player.rect.x > pipe.rect.x + PIPE_WIDTH:
                 self.game_state.increment_score(0.5)
                 pipe.passed = True
-            if pipe.type == "top": # Nur einmal Sound pro Pipe-Paar
-                self.sound_manager.play('point')
+                if pipe.type == "top": # Nur einmal Sound pro Pipe-Paar
+                    self.sound_manager.play('point')
 
     def check_game_over(self):
         if not self.player.alive or self.pipe_manager.check_collision(self.player):
