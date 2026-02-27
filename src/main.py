@@ -2,6 +2,7 @@
 from selection_screen_updated import run_selection
 #from miu_animals.miu_frog import run_frog
 from gameover_screen import run_game_over
+from setting_screen import run_settings
 import highscore
 from run import run_flappy
 import pygame
