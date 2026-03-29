@@ -8,10 +8,13 @@ import pytest
 from unittest.mock import MagicMock, patch
 from screen import Screen
 
+
 # ------------------------
 # Test: add_blocks und create_cloud
 # ------------------------
-@patch("pygame.transform.scale", side_effect=lambda img, size: img)  # scale gibt Surface zurück
+@patch(
+    "pygame.transform.scale", side_effect=lambda img, size: img
+)  # scale gibt Surface zurück
 @patch("pygame.image.load")
 def test_add_blocks_and_clouds(mock_load, mock_scale):
     mock_load.return_value = MagicMock()  # Mock-Surface
@@ -32,6 +35,7 @@ def test_add_blocks_and_clouds(mock_load, mock_scale):
     cloud_rect, cloud_img = screen.clouds[0]
     assert hasattr(cloud_rect, "x") and hasattr(cloud_rect, "y")
 
+
 @patch("pygame.transform.scale", side_effect=lambda img, size: img)
 @patch("pygame.image.load")
 def test_move_clouds_removes_offscreen(mock_load, mock_scale):
@@ -47,6 +51,7 @@ def test_move_clouds_removes_offscreen(mock_load, mock_scale):
 
     screen.move_clouds(speed=-2)
     assert len(screen.clouds) == 0  # Cloud entfernen
+
 
 @patch("pygame.transform.scale", side_effect=lambda img, size: img)
 @patch("pygame.image.load")

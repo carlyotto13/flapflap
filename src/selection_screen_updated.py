@@ -1,31 +1,36 @@
-# selection_screen_updated
+"""TODO."""
 
+# TODO refactor the name to not include updated
+#  remeber you have git for version control ;)
 import pygame
 from sys import exit
 from screen import Screen
-from settings import GAME_WIDTH, GAME_HEIGHT
 from run import run_flappy
 from setting_screen import run_settings
+from settings import GAME_HEIGHT
 
-def run_selection():
-    pygame.init()
-    window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
-    clock = pygame.time.Clock()
 
+def run_selection(window: pygame.Surface):
+    # pygame.init()  # TODO unnecessary. this will only run from the MenuRunner and
+    #  there pygame is initialized
+
+    # TODO: you init a new window every time - thus objects are potentially rendered to
+    #  different apps.
+    # window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
+
+    # TODO: you dont need a clock here. You dont need a frame rate limit in the menu
+    #  The clocks will be asps if you rm the clock
+    # clock = pygame.time.Clock()
 
     labels = ["FROG", "HAMSTER", "PENGUIN", "DOG"]
+    # TODO: use Path - and import it from Settings ASSETS_DIR
     screen = Screen(
         window,
-        '../assets/starting_screen/start_background.png',
-        block_image_path='../assets/starting_screen/start_block.png',
-        show_settings=True
+        "../assets/starting_screen/start_background.png",
+        block_image_path="../assets/starting_screen/start_block.png",
+        show_settings=True,
     )
-    screen.add_blocks(
-        labels,
-        start_y=GAME_HEIGHT * 2 / 5,
-        spacing=90
-    )
-
+    screen.add_blocks(labels, start_y=GAME_HEIGHT * 2 / 5, spacing=90)
 
     CLOUD_EVENT = pygame.USEREVENT + 1
     pygame.time.set_timer(CLOUD_EVENT, 3000)
@@ -49,4 +54,4 @@ def run_selection():
         screen.move_clouds(speed=-2)
         screen.draw()
         pygame.display.update()
-        clock.tick(60)
+        # clock.tick(60)
