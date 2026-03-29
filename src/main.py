@@ -1,9 +1,10 @@
 import pygame
 from selection_screen_updated import run_selection
 from gameover_screen import run_game_over
-from highscore import load_highscore, check_and_update_highscore
+from highscore import check_and_update_highscore
 from run import run_flappy
 from sound import update_background_music
+from settings import GAME_WIDTH, GAME_HEIGHT
 
 
 class GameInitializer:
@@ -12,15 +13,16 @@ class GameInitializer:
         pygame.init()
         pygame.mixer.init()
 
+        # TODO use Path and get from settings file
         pygame.mixer.music.load("../assets/sounds/background_music.wav")
         pygame.mixer.music.set_volume(0.1)
 
 
-class Game:
+class MenuRunner:
     def __init__(self):
         self.last_animal = None
 
-        GameInitializer.initialize()
+        self.window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 
     def run(self):
         update_background_music()
@@ -28,7 +30,7 @@ class Game:
         while True:
             # TODO: None check always with is
             if self.last_animal is None:
-                choice = run_selection()
+                choice = run_selection(self.window)
                 self.last_animal = choice
             else:
                 choice = self.last_animal
@@ -48,5 +50,6 @@ class Game:
 
 
 if __name__ == "__main__":
-    game = Game()
-    game.run()
+    GameInitializer.initialize()
+    menu = MenuRunner()
+    menu.run()

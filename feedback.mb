@@ -4,14 +4,23 @@ The first impression is a great runnable game with amazing hand drawn characters
 We love the creativity and extra effort!
 
 When I checked in the beginning of march, the state was rather unpolished and did not ran.
-Now it looks way better and here is some general feedback in this file as well as some # TODO
+Now it looks way better and here is some general feedback in this file as well as some `# TODO`
 comments in the modules themself. I might modify some code, feel free to merge and take it.
 
 I see that you started using branches and within there are effort to refactor and enhance.
 For me it would be sufficient if each of you merge a branch with a meaningful feature to the main
 branch (this can also be some incorporated feedback).
 
+Overall the code is clear and good organized and you demonstrate understanding of functions
+and basic object oriented programming.
+
 Here the general (grading relevant) feedback:
 - merge a branch (currently only @Sophie-bk ahs code in main)
 - use an auto formatter such as black or ruff so that PEP8 guidelines are applied (`pip install ruff` `ruff format`)
-- use type hinting/annotation for static code analysis
+- use type hinting/annotation for static code analysis like mypy
+- add docstrings like demonstrated in `highscore.py`
+- no design pattern used / or at least unclear
+- repo structure not repo/src/repo layout - dont forget the `__init__.py` file
+- check import in tests (otherwise great test cases)
+
+
