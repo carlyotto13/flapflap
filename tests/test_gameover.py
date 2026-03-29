@@ -11,12 +11,15 @@ import gameover_screen
 import pygame
 from unittest.mock import patch, MagicMock
 
+
 @patch("pygame.time.set_timer")
 @patch("pygame.image.load", return_value=pygame.Surface((10, 10)))
 @patch("pygame.display.set_mode")
 @patch("pygame.font.SysFont")
 @patch("pygame.event.get")
-def test_run_game_over_try_again(mock_events, mock_font, mock_display, mock_load, mock_timer):
+def test_run_game_over_try_again(
+    mock_events, mock_font, mock_display, mock_load, mock_timer
+):
     window = MagicMock()
     mock_display.return_value = window
 
@@ -27,15 +30,19 @@ def test_run_game_over_try_again(mock_events, mock_font, mock_display, mock_load
     mock_events.return_value = [event]
 
     import gameover_screen
+
     result = gameover_screen.run_game_over(10, "FROG")
     assert result == ("TRY_AGAIN", "FROG")
+
 
 @patch("pygame.time.set_timer")
 @patch("pygame.image.load", return_value=pygame.Surface((10, 10)))
 @patch("pygame.display.set_mode")
 @patch("pygame.font.SysFont")
 @patch("pygame.event.get")
-def test_run_game_over_back_to_menu(mock_events, mock_font, mock_display, mock_load, mock_timer):
+def test_run_game_over_back_to_menu(
+    mock_events, mock_font, mock_display, mock_load, mock_timer
+):
     window = MagicMock()
     mock_display.return_value = window
 
@@ -45,6 +52,7 @@ def test_run_game_over_back_to_menu(mock_events, mock_font, mock_display, mock_l
     screen_mock.blocks = [(rect_mock, ["BACK TO MENU"], 1.0)]
 
     import gameover_screen
+
     with patch("gameover_screen.Screen", return_value=screen_mock):
         event = MagicMock()
         event.type = pygame.MOUSEBUTTONDOWN

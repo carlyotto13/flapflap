@@ -17,7 +17,7 @@ class Animal:
 
     def move(self):
         self.tick_count += 1
-        d = self.vel * self.tick_count + 1.5 * self.tick_count ** 2
+        d = self.vel * self.tick_count + 1.5 * self.tick_count**2
         if d >= 16:
             d = 16
         if d < 0:

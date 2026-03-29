@@ -2,6 +2,7 @@
 import pygame
 from settings import import_sprite
 
+
 class Animal(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
@@ -13,7 +14,7 @@ class Animal(pygame.sprite.Sprite):
         self.animal_img = import_sprite("old_assets/animal")
         self.image = self.animal_img[self.frame_index]
         self.image = pygame.transform.scale(self.image, (size, size))
-        self.rect = self.image.get_rect(topleft = pos)
+        self.rect = self.image.get_rect(topleft=pos)
         self.mask = pygame.mask.from_surface(self.image)
         # bird status
         self.direction = pygame.math.Vector2(0, 0)

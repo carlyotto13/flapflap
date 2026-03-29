@@ -12,7 +12,7 @@ pygame.init()
 GAME_WIDTH = 360
 GAME_HEIGHT = 640
 # get image
-background = pygame.image.load('../assets/starting_screen/start_background.png')
+background = pygame.image.load("../assets/starting_screen/start_background.png")
 
 ### CLOUD
 cloud_x = GAME_WIDTH
@@ -21,13 +21,13 @@ cloud_y = GAME_HEIGHT / 2
 cloud_width = 209
 cloud_height = 120
 # get image
-cloud_image = pygame.image.load('../assets/starting_screen/start_obstacle.png')
+cloud_image = pygame.image.load("../assets/starting_screen/start_obstacle.png")
 # changing size
 cloud_image = pygame.transform.scale(cloud_image, (cloud_width, cloud_height))
 
 ### choosing blocks
-block = pygame.image.load('../assets/starting_screen/start_block.png')
-#sizw
+block = pygame.image.load("../assets/starting_screen/start_block.png")
+# sizw
 block_width = 183
 block_height = 72
 block = pygame.transform.scale(block, (block_width, block_height))
@@ -37,13 +37,13 @@ block = pygame.transform.scale(block, (block_width, block_height))
 font = pygame.font.SysFont("Comic Sans MS", 30)
 
 start_y = GAME_HEIGHT * 2 / 5
-spacing = 90   # Abstand zwischen den Blöcken
+spacing = 90  # Abstand zwischen den Blöcken
 
 blocks = []
 labels = ["FROG", "HAMSTER", "PENGUIN", "DOG"]
 
 for i in range(4):
-    x = (GAME_WIDTH - block_width) / 2   # horizontal zentriert
+    x = (GAME_WIDTH - block_width) / 2  # horizontal zentriert
     y = start_y + i * spacing
     rect = pygame.Rect(x, y, block_width, block_height)
     blocks.append((rect, labels[i]))
@@ -51,6 +51,7 @@ for i in range(4):
 # game logic
 velocity_x = -2
 clouds = []
+
 
 ### CLASS
 # cloud class
@@ -75,15 +76,17 @@ def draw():
         label_rect = label.get_rect(center=rect.center)  # Text mittig im Block
         window.blit(label, label_rect)
 
+
 def move():
     for cloud in clouds:
         cloud.x += velocity_x
 
-    while len(clouds) > 0 and clouds[0].x  < - cloud_width:
-        clouds.pop(0) # removes first element from the list
+    while len(clouds) > 0 and clouds[0].x < -cloud_width:
+        clouds.pop(0)  # removes first element from the list
+
 
 def create_clouds():
-    random_cloud_y = random.uniform(GAME_HEIGHT / 4,GAME_HEIGHT * 3 / 4)
+    random_cloud_y = random.uniform(GAME_HEIGHT / 4, GAME_HEIGHT * 3 / 4)
 
     cloud = Cloud(cloud_image)
     cloud.y = random_cloud_y
@@ -91,12 +94,13 @@ def create_clouds():
 
     print(len(clouds))
 
+
 # setup window
 window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 pygame.display.set_caption("Flap Flap")
 clock = pygame.time.Clock()
 create_clouds_timer = pygame.USEREVENT + 0
-pygame.time.set_timer(create_clouds_timer, 3000) # marks every 1.5 seconds
+pygame.time.set_timer(create_clouds_timer, 3000)  # marks every 1.5 seconds
 
 # game loop
 while True:
@@ -112,4 +116,3 @@ while True:
     draw()
     pygame.display.update()
     clock.tick(60)
-

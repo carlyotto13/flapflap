@@ -2,9 +2,30 @@
 
 import pygame
 import random
-from settings import GAME_WIDTH, GAME_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, CIRCLE_WIDTH, CIRCLE_HEIGHT, TEXT_FONT_SIZE, SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT
+from settings import (
+    GAME_WIDTH,
+    GAME_HEIGHT,
+    BLOCK_WIDTH,
+    BLOCK_HEIGHT,
+    BUTTON_WIDTH,
+    BUTTON_HEIGHT,
+    CIRCLE_WIDTH,
+    CIRCLE_HEIGHT,
+    TEXT_FONT_SIZE,
+    SETTINGS_BUTTON_WIDTH,
+    SETTINGS_BUTTON_HEIGHT,
+)
+
+
 class Screen:
-    def __init__(self, window, background_path, blocks=None, block_image_path=None, show_settings= True):
+    def __init__(
+        self,
+        window,
+        background_path,
+        blocks=None,
+        block_image_path=None,
+        show_settings=True,
+    ):
         self.window = window
         self.background = pygame.image.load(background_path)
 
@@ -19,31 +40,37 @@ class Screen:
 
         # Wolken
         self.clouds = []
-        self.cloud_image = pygame.image.load('../assets/starting_screen/start_obstacle.png')
+        self.cloud_image = pygame.image.load(
+            "../assets/starting_screen/start_obstacle.png"
+        )
         self.cloud_image = pygame.transform.scale(self.cloud_image, (209, 120))
 
         # Settings-Icon
-        self.settings_image = pygame.image.load("../assets/settings_screen/seetings_button.png")
-        self.settings_image = pygame.transform.scale(self.settings_image, (SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT))
+        self.settings_image = pygame.image.load(
+            "../assets/settings_screen/seetings_button.png"
+        )
+        self.settings_image = pygame.transform.scale(
+            self.settings_image, (SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT)
+        )
 
         self.show_settings = show_settings
         if self.show_settings:
-            self.settings_image = pygame.image.load("../assets/settings_screen/seetings_button.png")
-            self.settings_image = pygame.transform.scale(self.settings_image,
-                                                         (SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT))
+            self.settings_image = pygame.image.load(
+                "../assets/settings_screen/seetings_button.png"
+            )
+            self.settings_image = pygame.transform.scale(
+                self.settings_image, (SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT)
+            )
             self.settings_rect = self.settings_image.get_rect()
             self.settings_rect.topright = (GAME_WIDTH - 20, 20)
-
 
     def add_blocks(self, labels, start_y, spacing, x_positions=None, font_scales=None):
         self.blocks = []
         for i, label in enumerate(labels):
-
             if x_positions:
                 x = x_positions[i]
             else:
                 x = (GAME_WIDTH - BLOCK_WIDTH) / 2
-
 
             y = start_y + i * spacing
             rect = pygame.Rect(x, y, BLOCK_WIDTH, BLOCK_HEIGHT)

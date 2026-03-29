@@ -5,6 +5,7 @@ import os
 highscore = 0.0  # globaler Highscore
 HIGH_SCORE_FILE = os.path.join(os.path.dirname(__file__), "highscore.txt")
 
+
 def load_highscore():
     global highscore
     try:
@@ -15,9 +16,11 @@ def load_highscore():
     except ValueError:
         highscore = 0.0
 
+
 def save_highscore():
     with open(HIGH_SCORE_FILE, "w") as f:
         f.write(str(highscore))
+
 
 def update_highscore(score):
     global highscore

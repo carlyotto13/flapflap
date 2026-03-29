@@ -1,7 +1,21 @@
 import pygame
 from sys import exit
 import random
-from settings import SOUND_SETTINGS, GAME_WIDTH, GAME_HEIGHT, FROG_START_X, FROG_START_Y, FROG_WIDTH, FROG_HEIGHT, GRAVITY, JUMP_STRENGTH, PIPE_WIDTH, PIPE_HEIGHT, PIPE_OPENING_SPACE, PIPE_SPEED
+from settings import (
+    SOUND_SETTINGS,
+    GAME_WIDTH,
+    GAME_HEIGHT,
+    FROG_START_X,
+    FROG_START_Y,
+    FROG_WIDTH,
+    FROG_HEIGHT,
+    GRAVITY,
+    JUMP_STRENGTH,
+    PIPE_WIDTH,
+    PIPE_HEIGHT,
+    PIPE_OPENING_SPACE,
+    PIPE_SPEED,
+)
 from gameover_screen import run_game_over
 import highscore
 from animals import ANIMALS
@@ -44,15 +58,21 @@ class Player:
 class PipeManager:
     def __init__(self, obstacle_image_path):
         self.obstacle_image = pygame.image.load(obstacle_image_path)
-        self.obstacle_image = pygame.transform.scale(self.obstacle_image, (PIPE_WIDTH, PIPE_HEIGHT))
+        self.obstacle_image = pygame.transform.scale(
+            self.obstacle_image, (PIPE_WIDTH, PIPE_HEIGHT)
+        )
         self.bottom_image = pygame.transform.rotate(self.obstacle_image, 180)
         self.pipes = []
 
     def create_pipes(self):
         random_pipe_y = -PIPE_HEIGHT / 4 - random.random() * (PIPE_HEIGHT / 2)
         top = Pipe(self.obstacle_image, GAME_WIDTH, random_pipe_y, "top")
-        bottom = Pipe(self.bottom_image, GAME_WIDTH,
-                      random_pipe_y + PIPE_HEIGHT + PIPE_OPENING_SPACE, "bottom")
+        bottom = Pipe(
+            self.bottom_image,
+            GAME_WIDTH,
+            random_pipe_y + PIPE_HEIGHT + PIPE_OPENING_SPACE,
+            "bottom",
+        )
         self.pipes.extend([top, bottom])
 
     def update(self):
@@ -87,14 +107,14 @@ class GameState:
 class SoundManager:
     def __init__(self):
         self.sounds = {
-            'point': pygame.mixer.Sound("../assets/sounds/obstacle_sound.wav"),
-            'flap': pygame.mixer.Sound("../assets/sounds/flap_sound.wav"),
-            'gameover': pygame.mixer.Sound("../assets/sounds/gameover_sound.wav")
+            "point": pygame.mixer.Sound("../assets/sounds/obstacle_sound.wav"),
+            "flap": pygame.mixer.Sound("../assets/sounds/flap_sound.wav"),
+            "gameover": pygame.mixer.Sound("../assets/sounds/gameover_sound.wav"),
         }
 
-        self.sounds['point'].set_volume(0.05)
-        self.sounds['flap'].set_volume(0.3)
-        self.sounds['gameover'].set_volume(0.1)
+        self.sounds["point"].set_volume(0.05)
+        self.sounds["flap"].set_volume(0.3)
+        self.sounds["gameover"].set_volume(0.1)
 
     def play(self, sound_name):
         if SOUND_SETTINGS["game"] and sound_name in self.sounds:
@@ -135,7 +155,7 @@ class FlappyBirdGame:
                 if event.key in (pygame.K_SPACE, pygame.K_UP):
                     if not self.game_state.game_over:
                         self.player.jump()
-                        self.sound_manager.play('flap')
+                        self.sound_manager.play("flap")
                     else:
                         return "RESTART"
 
@@ -146,12 +166,12 @@ class FlappyBirdGame:
             if not pipe.passed and self.player.rect.x > pipe.x + PIPE_WIDTH:
                 self.game_state.increment_score(0.5)
                 pipe.passed = True
-                self.sound_manager.play('point')
+                self.sound_manager.play("point")
 
     def check_game_over(self):
         if not self.player.alive or self.pipe_manager.check_collision(self.player):
             if not self.game_state.game_over:
-                self.sound_manager.play('gameover')
+                self.sound_manager.play("gameover")
                 self.game_state.game_over = True
                 highscore.update_highscore(self.game_state.score)
 
@@ -162,7 +182,9 @@ class FlappyBirdGame:
         for pipe in self.pipe_manager.pipes:
             pipe.draw(self.window)
 
-        score_text = self.font.render(str(int(self.game_state.score)), True, (255, 255, 255))
+        score_text = self.font.render(
+            str(int(self.game_state.score)), True, (255, 255, 255)
+        )
         self.window.blit(score_text, (5, 0))
 
     def run(self):
@@ -187,7 +209,9 @@ class FlappyBirdGame:
             self.draw()
 
             if self.game_state.game_over:
-                action, _ = run_game_over(self.game_state.score, last_animal=self.animal_key)
+                action, _ = run_game_over(
+                    self.game_state.score, last_animal=self.animal_key
+                )
                 if action == "TRY_AGAIN":
                     return run_flappy(self.animal_key)
                 elif action == "BACK_TO_MENU":

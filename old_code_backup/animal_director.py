@@ -6,4 +6,3 @@ class AnimalDirector:
         self.builder.set_position()
         self.builder.set_images()
         return self.builder.get_result()
-

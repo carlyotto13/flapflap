@@ -17,7 +17,7 @@ FROG_HEIGHT = 64
 BLOCK_WIDTH = 183
 BLOCK_HEIGHT = 72
 
-#BUTTON
+# BUTTON
 SETTINGS_BUTTON_WIDTH = 47
 SETTINGS_BUTTON_HEIGHT = 47
 
@@ -27,10 +27,7 @@ BUTTON_HEIGHT = 33
 CIRCLE_WIDTH = 25
 CIRCLE_HEIGHT = 25
 
-SOUND_SETTINGS = {
-        "background": True,
-        "game": True
-    }
+SOUND_SETTINGS = {"background": True, "game": True}
 
 # TEXT
 TEXT_FONT_SIZE = 30

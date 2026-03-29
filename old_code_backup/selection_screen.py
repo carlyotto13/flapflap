@@ -1,5 +1,10 @@
 import pygame
-from old_code_backup.animal_builder import FrogBuilder, HamsterBuilder, PenguinBuilder, DogBuilder
+from old_code_backup.animal_builder import (
+    FrogBuilder,
+    HamsterBuilder,
+    PenguinBuilder,
+    DogBuilder,
+)
 from old_code_backup.animal_director import AnimalDirector
 
 
