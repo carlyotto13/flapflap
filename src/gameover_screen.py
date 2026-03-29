@@ -1,11 +1,10 @@
-# gameover screen
+"""TODO modules docstrings like this."""
 
 import pygame
 from sys import exit
 from screen import Screen
 from settings import GAME_WIDTH, GAME_HEIGHT
-import highscore
-
+from highscore import load_highscore
 
 def run_game_over(score, last_animal):
     pygame.init()
@@ -21,9 +20,10 @@ def run_game_over(score, last_animal):
     )
 
     # Blöcke mit Text und optionaler Schriftgröße
+    highscore = load_highscore()
     labels = [
         "GAME OVER",
-        f"Highscore: {highscore.highscore}\nYour Score: {score}",
+        f"Highscore: {highscore}\nYour Score: {score}",
         "TRY AGAIN",
         "BACK TO MENU",
     ]

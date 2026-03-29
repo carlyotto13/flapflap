@@ -9,7 +9,7 @@ from setting_screen import run_settings
 
 
 def run_selection():
-    pygame.init()
+    # pygame.init()
     window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
     clock = pygame.time.Clock()
 

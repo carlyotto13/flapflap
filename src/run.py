@@ -17,7 +17,7 @@ from settings import (
     PIPE_SPEED,
 )
 from gameover_screen import run_game_over
-import highscore
+from highscore import check_and_update_highscore
 from animals import ANIMALS
 
 
@@ -173,7 +173,7 @@ class FlappyBirdGame:
             if not self.game_state.game_over:
                 self.sound_manager.play("gameover")
                 self.game_state.game_over = True
-                highscore.update_highscore(self.game_state.score)
+                check_and_update_highscore(self.game_state.score)
 
     def draw(self):
         self.window.blit(self.background, (0, 0))
