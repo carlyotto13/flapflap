@@ -1,4 +1,4 @@
-# selection_screen_updated
+# selection.py
 
 import pygame
 from sys import exit

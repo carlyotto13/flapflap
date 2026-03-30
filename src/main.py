@@ -1,7 +1,7 @@
 # main.py
 
 import pygame
-from selection_screen_updated import run_selection
+from selection import run_selection
 from gameover_screen import run_game_over
 import highscore
 from run import run_flappy
