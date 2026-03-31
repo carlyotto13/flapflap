@@ -1,7 +1,7 @@
-# settings.py
-
-### CONSTANTS
-# from json import JSONDecoder
+"""
+Includes constants for the game.
+From json import JSONDecoder.
+"""
 
 # BACKGOUND
 GAME_WIDTH = 360
@@ -17,7 +17,7 @@ FROG_HEIGHT = 64
 BLOCK_WIDTH = 183
 BLOCK_HEIGHT = 72
 
-#BUTTON
+# BUTTON
 SETTINGS_BUTTON_WIDTH = 47
 SETTINGS_BUTTON_HEIGHT = 47
 
@@ -27,10 +27,7 @@ BUTTON_HEIGHT = 33
 CIRCLE_WIDTH = 25
 CIRCLE_HEIGHT = 25
 
-SOUND_SETTINGS = {
-        "background": True,
-        "game": True
-    }
+SOUND_SETTINGS = {"background": True, "game": True}
 
 # TEXT
 TEXT_FONT_SIZE = 30
@@ -41,7 +38,7 @@ PIPE_HEIGHT = 400
 PIPE_OPENING_SPACE = GAME_HEIGHT / 4
 PIPE_SPEED = -2
 
-# Cloud (background decoration)
+# Cloud
 CLOUD_WIDTH = 209
 CLOUD_HEIGHT = 120
 CLOUD_SPEED = -2

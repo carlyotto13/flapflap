@@ -1,10 +1,10 @@
-# run.py
+"""responsible for game loop and game mechanics"""
 
 import pygame
 from sys import exit
 from settings import GAME_WIDTH, GAME_HEIGHT
 from gameover_screen import run_game_over
-import highscore
+from highscore import check_and_update_highscore
 from animals import ANIMALS
 from player import Player
 from pipes import PipeManager
@@ -54,7 +54,6 @@ class FlappyBirdGame:
         Process user input and game events.
         """
         for event in pygame.event.get():
-
             if event.type == pygame.QUIT:
                 return "QUIT"
 
@@ -65,7 +64,7 @@ class FlappyBirdGame:
                 if event.key in (pygame.K_SPACE, pygame.K_UP):
                     if not self.game_state.game_over:
                         self.player.jump()
-                        self.sound_manager.play('flap')
+                        self.sound_manager.play("flap")
                     else:
                         return "RESTART"
 
@@ -77,9 +76,9 @@ class FlappyBirdGame:
         """
         if not self.player.alive or self.pipe_manager.check_collision(self.player):
             if not self.game_state.game_over:
-                self.sound_manager.play('gameover')
+                self.sound_manager.play("gameover")
                 self.game_state.game_over = True
-                highscore.update_highscore(self.game_state.score)
+                check_and_update_highscore(self.game_state.score)
 
     def update(self):
         """
@@ -100,7 +99,9 @@ class FlappyBirdGame:
         for pipe in self.pipe_manager.pipes:
             pipe.draw(self.window)
 
-        score_text = self.font.render(str(int(self.game_state.score)), True, (255, 255, 255))
+        score_text = self.font.render(
+            str(int(self.game_state.score)), True, (255, 255, 255)
+        )
         self.window.blit(score_text, (5, 0))
 
     def reset(self):
@@ -132,7 +133,9 @@ class FlappyBirdGame:
             self.draw()
 
             if self.game_state.game_over:
-                action, _ = run_game_over(self.game_state.score, last_animal=self.animal_key)
+                action, _ = run_game_over(
+                    self.game_state.score, last_animal=self.animal_key
+                )
                 if action == "TRY_AGAIN":
                     return run_flappy(self.animal_key)
                 elif action == "BACK_TO_MENU":

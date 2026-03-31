@@ -1,13 +1,12 @@
-# highscore.py
+"""saves highscore in txt file"""
 
-import os
+from pathlib import Path
 
-highscore = 0.0  # global Highscore
-HIGH_SCORE_FILE = os.path.join(os.path.dirname(__file__), "highscore.txt")
+HIGH_SCORE_FILE = Path(__file__).parent / "highscore.txt"
 
-def load_highscore():
-    '''Loads highscore file.'''
-    global highscore
+
+def load_highscore() -> float:
+    """Loads highscore from file."""
     try:
         with open(HIGH_SCORE_FILE, "r") as f:
             highscore = float((f.read().strip()))
@@ -15,15 +14,20 @@ def load_highscore():
         highscore = 0.0
     except ValueError:
         highscore = 0.0
+    return highscore
 
-def save_highscore():
-    '''Saves highscore to highscore.txt'''
+
+def save_highscore(highscore: float) -> None:
+    """Saves highscore to highscore.txt"""
     with open(HIGH_SCORE_FILE, "w") as f:
         f.write(str(highscore))
 
-def update_highscore(score):
-    '''Updates new highscore'''
-    global highscore
-    if score > highscore:
-        highscore = score
-        save_highscore()
+
+def check_and_update_highscore(score: float):
+    """
+    Update highscore with new score if highscore changed.
+    :param score: New highscore.
+    """
+    old_highscore = load_highscore()
+    if score > old_highscore:
+        save_highscore(score)

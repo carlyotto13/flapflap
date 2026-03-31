@@ -8,6 +8,7 @@ import pytest
 from unittest.mock import MagicMock, patch
 from screen import Screen
 
+
 # Test: add_blocks und create_cloud
 @patch("pygame.transform.scale", side_effect=lambda img, size: img)
 @patch("pygame.image.load")
@@ -30,6 +31,7 @@ def test_add_blocks_and_clouds(mock_load, mock_scale):
     cloud_rect, cloud_img = screen.clouds[0]
     assert hasattr(cloud_rect, "x") and hasattr(cloud_rect, "y")
 
+
 @patch("pygame.transform.scale", side_effect=lambda img, size: img)
 @patch("pygame.image.load")
 def test_move_clouds_removes_offscreen(mock_load, mock_scale):
@@ -45,6 +47,7 @@ def test_move_clouds_removes_offscreen(mock_load, mock_scale):
 
     screen.move_clouds(speed=-2)
     assert len(screen.clouds) == 0  # remove cloud
+
 
 @patch("pygame.transform.scale", side_effect=lambda img, size: img)
 @patch("pygame.image.load")
@@ -70,4 +73,4 @@ def test_draw_calls_blit(mock_font, mock_load, mock_scale):
     screen.draw()
 
     # Assert
-    assert window.blit.called # called upon at least once
+    assert window.blit.called  # called upon at least once

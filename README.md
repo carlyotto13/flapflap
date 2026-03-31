@@ -79,7 +79,7 @@ flapflap/
 │    └── screen.py
 │    └── selection.py
 │    └── selection_screen.py
-│    └── setting_screen
+│    └── setting_screen.py
 │    └── settings.py
 │    └── sound.py
 ├── tests/

@@ -1,18 +1,21 @@
-# gameover screen
+"""Creates the game over screen."""
 
 import pygame
 from sys import exit
 from screen import Screen
 from settings import GAME_WIDTH, GAME_HEIGHT
-import highscore
+from highscore import load_highscore
+from pathlib import Path
+
+ASSETS_PATH = Path(__file__).parents[1] / "assets"
 
 
 def run_game_over(score, last_animal):
-    '''
+    """
     Displays game over screen and handles player interactions.
     Restart game or return to menu
     Shows players score and highscore
-    '''
+    """
     pygame.init()
     window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
     clock = pygame.time.Clock()
@@ -20,21 +23,24 @@ def run_game_over(score, last_animal):
     # Screen Setup
     screen = Screen(
         window,
-        background_path='../assets/starting_screen/start_background.png',
-        block_image_path='../assets/starting_screen/start_block.png',
-        show_settings=False
+        background_path=ASSETS_PATH / "starting_screen" / "start_background.png",
+        block_image_path=ASSETS_PATH / "starting_screen" / "start_block.png",
+        show_settings=False,
     )
 
     # labels for blocks and font size
+    highscore = load_highscore()
     labels = [
         "GAME OVER",
-        f"Highscore: {highscore.highscore}\nYour Score: {score}",
+        f"Highscore: {highscore}\nYour Score: {score}",
         "TRY AGAIN",
-        "BACK TO MENU"
+        "BACK TO MENU",
     ]
     font_scales = [1.0, 0.5, 0.7, 0.7]
 
-    screen.add_blocks(labels, start_y=GAME_HEIGHT*2/5, spacing=90, font_scales=font_scales)
+    screen.add_blocks(
+        labels, start_y=GAME_HEIGHT * 2 / 5, spacing=90, font_scales=font_scales
+    )
 
     # Cloud-Event
     CLOUD_EVENT = pygame.USEREVENT + 1

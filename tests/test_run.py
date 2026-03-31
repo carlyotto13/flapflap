@@ -13,6 +13,7 @@ import pygame
 
 # ---------- PLAYER TESTS ----------
 
+
 @patch("pygame.image.load")
 @patch("pygame.transform.scale")
 def test_player_falls_due_to_gravity(mock_scale, mock_load):
@@ -48,6 +49,7 @@ def test_player_dies_when_falling_below_screen(mock_scale, mock_load):
 
 # ---------- GAME STATE TESTS ----------
 
+
 def test_game_state_reset():
     state = GameState()
     state.score = 10
@@ -68,6 +70,7 @@ def test_score_increment():
 
 
 # ---------- PIPE MANAGER TESTS ----------
+
 
 @patch("pygame.image.load")
 @patch("pygame.transform.scale")

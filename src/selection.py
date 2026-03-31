@@ -1,4 +1,4 @@
-# selection.py
+"""Responsible for selection of character."""
 
 import pygame
 from sys import exit
@@ -6,27 +6,25 @@ from screen import Screen
 from settings import GAME_WIDTH, GAME_HEIGHT
 from run import run_flappy
 from setting_screen import run_settings
+from pathlib import Path
+
+ASSETS_PATH = Path(__file__).parents[1] / "assets"
+
 
 def run_selection():
-    '''Initializes the selection screen.'''
-    pygame.init()
+    """Initializes the selection screen."""
+    # pygame.init()
     window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
     clock = pygame.time.Clock()
-
 
     labels = ["FROG", "HAMSTER", "PENGUIN", "DOG"]
     screen = Screen(
         window,
-        '../assets/starting_screen/start_background.png',
-        block_image_path='../assets/starting_screen/start_block.png',
-        show_settings=True
+        background_path=ASSETS_PATH / "starting_screen" / "start_background.png",
+        block_image_path=ASSETS_PATH / "starting_screen" / "start_block.png",
+        show_settings=True,
     )
-    screen.add_blocks(
-        labels,
-        start_y=GAME_HEIGHT * 2 / 5,
-        spacing=90
-    )
-
+    screen.add_blocks(labels, start_y=GAME_HEIGHT * 2 / 5, spacing=90)
 
     CLOUD_EVENT = pygame.USEREVENT + 1
     pygame.time.set_timer(CLOUD_EVENT, 3000)

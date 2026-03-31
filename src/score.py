@@ -1,4 +1,5 @@
-# score.py
+"""Checks and assigns scores."""
+
 
 class ScoreManager:
     """
@@ -21,4 +22,4 @@ class ScoreManager:
             if not pipe.passed and player.rect.x > pipe.x + pipe.width:
                 self.game_state.increment_score(0.5)
                 pipe.passed = True
-                self.sound_manager.play('point')
+                self.sound_manager.play("point")
