@@ -23,7 +23,7 @@ def save_highscore(highscore: float) -> None:
         f.write(str(highscore))
 
 
-def check_and_update_highscore(score: float):
+def check_and_update_highscore(score: float) -> None:
     """
     Update highscore with new score if highscore changed.
     :param score: New highscore.

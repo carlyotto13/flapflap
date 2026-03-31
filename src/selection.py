@@ -4,7 +4,7 @@ import pygame
 from sys import exit
 from screen import Screen
 from settings import GAME_WIDTH, GAME_HEIGHT
-from run import run_flappy
+#from run import run_flappy
 from setting_screen import run_settings
 from pathlib import Path
 
@@ -24,7 +24,7 @@ def run_selection(window:pygame.Surface) -> str:
     str
         The selected animal."""
     # pygame.init()
-    window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
+    #window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
     #clock = pygame.time.Clock()
 
     labels = ["FROG", "HAMSTER", "PENGUIN", "DOG"]
@@ -49,7 +49,8 @@ def run_selection(window:pygame.Surface) -> str:
                 pos = pygame.mouse.get_pos()
                 for rect, label, scale in screen.blocks:
                     if rect.collidepoint(pos):
-                        run_flappy(label[0])
+                        return label[0]
+                        #run_flappy(label[0])
                 if screen.settings_rect.collidepoint(pos):
                     run_settings()
             if event.type == CLOUD_EVENT:
