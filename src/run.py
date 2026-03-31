@@ -19,7 +19,7 @@ class FlappyBirdGame:
     Handles game loop
     """
 
-    def __init__(self, animal_key):
+    def __init__(self, animal_key: str) -> None:
         """
         Setup the game environment and load assets.
         """
@@ -49,7 +49,7 @@ class FlappyBirdGame:
 
         self.font = pygame.font.SysFont("Comic Sans MS", 45)
 
-    def handle_events(self):
+    def handle_events(self) -> str:
         """
         Process user input and game events.
         """
@@ -70,7 +70,7 @@ class FlappyBirdGame:
 
         return "CONTINUE"
 
-    def check_game_over(self):
+    def check_game_over(self) -> None:
         """
         Check whether the player has lost the game.
         """
@@ -80,7 +80,7 @@ class FlappyBirdGame:
                 self.game_state.game_over = True
                 check_and_update_highscore(self.game_state.score)
 
-    def update(self):
+    def update(self) -> None:
         """
         Update all gameplay systems.
         """
@@ -89,7 +89,7 @@ class FlappyBirdGame:
         self.score_manager.update(self.player, self.pipe_manager.pipes)
         self.check_game_over()
 
-    def draw(self):
+    def draw(self) -> None:
         """
         Draw the current frame.
         """
@@ -104,7 +104,7 @@ class FlappyBirdGame:
         )
         self.window.blit(score_text, (5, 0))
 
-    def reset(self):
+    def reset(self) -> None:
         """
         Reset game entities after restart.
         """
@@ -112,7 +112,7 @@ class FlappyBirdGame:
         self.player = Player(self.config["player"], self.config)
         self.pipe_manager.pipes.clear()
 
-    def run(self):
+    def run(self) -> None:
         """
         Main game loop.
         """
@@ -145,7 +145,7 @@ class FlappyBirdGame:
             self.clock.tick(60)
 
 
-def run_flappy(animal_key):
+def run_flappy(animal_key: str) -> None:
     """
     Entry point for starting the game.
     """
