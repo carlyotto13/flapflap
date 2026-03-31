@@ -43,7 +43,7 @@ class MenuRunner:
 
         while True:
             if self.last_animal is None:
-                choice = run_selection()
+                choice = run_selection(self.window)
                 self.last_animal = choice
             else:
                 choice = self.last_animal
