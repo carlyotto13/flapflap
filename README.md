@@ -66,7 +66,8 @@ flapflap/
 │
 ├── assets/
 ├── src
-│    └── main.py
+│    └── __init__.py
+     └── main.py
 │    └── run.py
 │    └── animals.py
 │    └── game_state.py
