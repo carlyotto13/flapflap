@@ -62,5 +62,8 @@ class MenuRunner:
 
 if __name__ == "__main__":
     """Entry point for game: Initializes systems"""
-    game = Game()
-    game.run()
+    #game = Game()
+    #game.run()
+    GameInitializer.initialize()
+    menu = MenuRunner()
+    menu.run()
